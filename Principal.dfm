@@ -6,7 +6,8 @@ object FPrinc: TFPrinc
   BorderStyle = bsSingle
   Caption = 
     'Calculadora de Biorritmo v1.0                                   ' +
-    '                       Autor: TSU Francisco S'#225'ez. Dic 2.010'
+    '                Autor: Ing. Francisco S'#225'ez.                     ' +
+    '             Dic 2.010'
   ClientHeight = 530
   ClientWidth = 751
   Color = clBtnFace
@@ -102,6 +103,7 @@ object FPrinc: TFPrinc
     Width = 102
     Height = 24
     Date = 40537.621440601860000000
+    Format = 'dd/MM/yyyy'
     Time = 40537.621440601860000000
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -128,6 +130,7 @@ object FPrinc: TFPrinc
     Width = 102
     Height = 24
     Date = 40537.621440601860000000
+    Format = 'dd/MM/yyyy'
     Time = 40537.621440601860000000
     Enabled = False
     Font.Charset = DEFAULT_CHARSET

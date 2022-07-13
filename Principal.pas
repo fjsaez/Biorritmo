@@ -85,7 +85,8 @@ begin
   Cont:=0;
   for I:=0 to High(Bio) do
   begin
-    Bio[I].X:=I*PropX;  Inc(Cont,1);
+    Bio[I].X:=I*PropX;
+    Inc(Cont,1);
     Bio[I].Y:=AltoScr-Round(RadToDeg(Sin(2*Pi/DiasCiclo*(DiasVida+Cont))*PropY)+MitadHPB);
   end;
   PB1.Canvas.Polyline(Bio);  //se dibuja como tal
@@ -101,7 +102,7 @@ procedure TFPrinc.CalcularBio;
 var
   Fecha2: TDate;  I,PropH: integer;  VRect: TRect;
 begin
-  //se calcula la cantidad de días entre fecha nac y fecha escogida:
+  //se calcula la cantidad de días entre fecha de nacimiento y fecha escogida:
   if CBHoy.Checked then Fecha2:=Date
                    else Fecha2:=DTPOFecha.Date;
   NumDias:=DaysBetween(Fecha2,DTPFNac.Date);
@@ -115,33 +116,48 @@ begin
   with PB1.Canvas do
   begin
     //relleno del paintbox:
-    Brush.Color:=clWhite;  Brush.Style:=bsSolid;
-    VRect.Left:=0;  VRect.Top:=0;
-    VRect.Right:=AnchoScr;  VRect.Bottom:=AltoScr;
+    Brush.Color:=clWhite;
+    Brush.Style:=bsSolid;
+    VRect.Left:=0;
+    VRect.Top:=0;
+    VRect.Right:=AnchoScr;
+    VRect.Bottom:=AltoScr;
     FillRect(VRect);
     //dibujo de líneas horizontales:
-    Pen.Color:=clGray;  Pen.Style:=psDot;
-    Pen.Width:=1;  PropH:=AltoScr div 20;
-    MoveTo(0,0);  LineTo(AnchoScr,0);  //primera línea
+    Pen.Color:=clGray;
+    Pen.Style:=psDot;
+    Pen.Width:=1;
+    PropH:=AltoScr div 20;
+    MoveTo(0,0);
+    LineTo(AnchoScr,0);  //primera línea
     for I:=1 to 20 do
     begin
-      MoveTo(0,I*PropH+2);  LineTo(AnchoScr,I*PropH+2);
+      MoveTo(0,I*PropH+2);
+      LineTo(AnchoScr,I*PropH+2);
     end;
     //dibujo de líneas verticales:
     for I:=1 to 29 do
     begin
       if I in [1,15,28] then     //para dibujar el eje y negro
       begin
-        Pen.Color:=clBlack;  Pen.Style:=psSolid;  Pen.Width:=2;
+        Pen.Color:=clBlack;
+        Pen.Style:=psSolid;
+        Pen.Width:=2;
       end
       else                       //para el resto de ejes y grises
       begin
-        Pen.Color:=clGray;  Pen.Style:=psDot;  Pen.Width:=1;
+        Pen.Color:=clGray;
+        Pen.Style:=psDot;
+        Pen.Width:=1;
       end;
-      MoveTo(PropX*I,0);  LineTo(PropX*I,AltoScr);
+      MoveTo(PropX*I,0);
+      LineTo(PropX*I,AltoScr);
     end;
-    Pen.Color:=clBlack;  Pen.Style:=psSolid;  Pen.Width:=2;
-    MoveTo(0,MitadHPB);  LineTo(AnchoScr,MitadHPB); //horizontal o eje x
+    Pen.Color:=clBlack;
+    Pen.Style:=psSolid;
+    Pen.Width:=2;
+    MoveTo(0,MitadHPB);
+    LineTo(AnchoScr,MitadHPB); //horizontal o eje x
   end;  {with}
   //se dibujan las ondas senoidales:
   DibujarOnda(NumDias,23,clRed);    //físico
@@ -171,10 +187,12 @@ end;
 
 procedure TFPrinc.FormShow(Sender: TObject);
 begin
+  FormatSettings.ShortDateFormat:='dd/mm/yyyy';
   DTPFNac.Date:=Date;    //fecha de nacimiento
   DTPOFecha.Date:=Date;  //fecha posterior
   CBHoy.Caption:='Hoy ('+DateToStr(Date)+')';
-  AltoScr:=PB1.Height;  AnchoScr:=PB1.Width;
+  AltoScr:=PB1.Height;
+  AnchoScr:=PB1.Width;
   MitadHPB:=AltoScr div 2;
   PropX:=AnchoScr div High(Bio);
   PropY:=3;  //AltoScr div 100;

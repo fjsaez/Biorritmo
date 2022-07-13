@@ -6,8 +6,8 @@ object FPrinc: TFPrinc
   BorderStyle = bsSingle
   Caption = 
     'Calculadora de Biorritmo v1.0                                   ' +
-    '                Autor: Ing. Francisco S'#225'ez.                     ' +
-    '             Dic 2.010'
+    '     Autor: Ing. Francisco S'#225'ez.                                ' +
+    '  Dic 2.010'
   ClientHeight = 530
   ClientWidth = 751
   Color = clBtnFace
